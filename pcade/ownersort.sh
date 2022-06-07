@@ -9,8 +9,9 @@ cd -  # спускаюсь в начальную дирректорию где �
 total=$(cat $users | wc -l) # подсчитываю колличество user
 counter=0
 while [ $counter -lt $total ]; do # вывожу конкретную строку с именем user
-	let counter+=1 # щётчик
-	name=$(sed -n "$counter"p $users) # вывожу имя пользователя
-	finder=$(ls -l | grep $name | tr -s ' ' '\t' | cut -f '9 9') # выделяю файлы принадлежащие конкретному пользователю
-	cp ~/$finder ~/home/$name/ # записываю файлы в дирректорию конкретного пользователя
+	let counter+=1
+	name=$(sed -n "$counter"p $users)
+	finder=$(ls -l | grep $name | tr -s ' ' '\t' | cut -f '9 9')
+	echo $finder
+	cp $finder /home/pcade/PycharmProjects/geek-python/Unix/pcade/
 done
